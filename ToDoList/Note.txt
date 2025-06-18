@@ -1,0 +1,4 @@
+1. ToDoListApp -> Entry Point -> ContentView
+2. DateManager (berisi semua bagian tanggal)
+    - week
+

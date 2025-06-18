@@ -10,6 +10,7 @@ import Foundation
 
 struct DateHeaderVIew: View {
     
+    // Mengikuti semua properti yang di publish dari DateManager
     @EnvironmentObject var dateManager: DateManager
     
     var body: some View {
@@ -17,6 +18,7 @@ struct DateHeaderVIew: View {
             VStack {
                 nameHeaderTextView()
                 
+                // Mencetak hasil array dari weeks di DateManager()
                 DateSliderView { week in
                     DateView(week: week)
                 }
