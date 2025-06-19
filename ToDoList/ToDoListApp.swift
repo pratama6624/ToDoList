@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct ToDoListApp: App {
     
+    // Tambahkan flow nanti ya (ini belum)
     @StateObject var dateManager: DateManager = DateManager()
     
     var body: some Scene {

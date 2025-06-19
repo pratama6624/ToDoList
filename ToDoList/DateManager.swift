@@ -9,6 +9,10 @@ import Foundation
 
 class DateManager: ObservableObject {
     
+    // Bagian terakhir untuk alur adalah:
+    // Secara default date manager punya init untuk set setiap kali dipanggil dengan acuan date parameter untuk set selected date
+    // Tapi jika dipanggil dari view UI depan maka cara mengatur selected date tidak lagi dengan parameter tapi dari user
+    
     // NOTE : DI SWIFT FORMAT CALENDAR.CURRENT DI LOCK UTC / BELUM GMT +7 SEPERTI DI INDO WIB,
     // JADI GUNAKAN KONVERSI MANUAL KE WIB +7 SECARA MANUAL SETIAP KALI DEBUGGING
     
@@ -70,21 +74,26 @@ class DateManager: ObservableObject {
         return .init(index: index, dates: result, referenceDate: date)
     }
     
-    // Pilih tanggal sekarang
+    // Pilih tanggal sekarang dari UI View bagian depan
     func selectToday() {
         select(date: Date())
     }
     
+    // Mencari dan mengisi selected date
     func select(date: Date) {
         selectedDate = CalendarHelper.jakarta.startOfDay(for: date)
     }
     
+    // Slideer direction
     func update(to direction: SliderTimeDirection) {
         switch direction {
+        // future = minggu depan
         case .future:
             selectedDate = CalendarHelper.jakarta.date(byAdding: .day, value: 7, to: selectedDate)!
+        // past = minggu lalu
         case .past:
             selectedDate = CalendarHelper.jakarta.date(byAdding: .day, value: -7, to: selectedDate)!
+        // unknown = minggu sekarang
         case .unknown:
             selectedDate = selectedDate
         }

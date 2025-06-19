@@ -9,13 +9,16 @@ import SwiftUI
 
 struct DateView: View {
     
+    // Mengikuti semua properti yang di publish dari DateManager
     @EnvironmentObject var weekManager: DateManager
     var week: WeekModel
     
     var body: some View {
         HStack {
+            // Loop untuk 1 minggu penuh
             ForEach(0..<7) { i in
                 VStack {
+                    // Ambil 3 digit name of day
                     Text(week.dates[i].toString(format: "EEE").uppercased())
                         .font(.system(size: 10))
                         .fontWeight(week.dates[i] == week.referenceDate ? .semibold : .light)
@@ -25,6 +28,7 @@ struct DateView: View {
                     Spacer()
                         .frame(height: 4)
                     
+                    // Ambil Tanngal
                     Text(week.dates[i].toString(format: "d"))
                         .font(.system(size: 16))
                         .fontWeight(week.dates[i] == week.referenceDate ? .bold : .light)

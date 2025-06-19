@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Mengikuti semua properti yang di publish dari DateManager
 struct Task: Codable, Hashable, Identifiable {
     var id: UUID
     var title: String
